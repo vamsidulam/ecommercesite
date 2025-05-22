@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .checkout-box-section{
+            display: flex;
+            padding: 50px;
+        }
+        
+        .order-summary-section{
+            flex: 1;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .address-section{
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: space-between;
+            
+            align-items: center;
+        }
+        .details-section{
+            position: relative;
+        }
+        .form-section{
+            position: absolute;
+            top: -50px;
+            display: none;
+            background: transparent;
+            z-index: 999;
+            background-color: rgb(255, 253, 253);
+            width: 350px;
+        }
+        form{
+            position: relative;
+        }
+        .save-result{
+            font-size: 18px;
+            position: absolute;
+            top: -3px;
+            display: none;
+        }
+        .form-section-box{
+            display: flex;
+            justify-content: center;
+            z-index: 9999;
+        }
+        .form-section form .form-heading{
+            font-weight: bold;
+            font-size: 20px;
+            
+        }
+        .form-section form{
+            box-shadow: 0px 0px 5px rgb(221, 194, 194);
+            padding: 30px;
+            padding-bottom: 30px;
+            
+        }
+        .form-section form .form-area .address-section{
+            display: flex;
+            flex-direction: column;
+        }
+        .form-section form .form-area .make-default-address-section{
+            display: flex;
+            align-items: center;
+            padding-top: 20px;
+            position: relative;
+        }
+        .note{
+            position: absolute;
+            top: 43px;
+            display: none; 
+        }
+        .form-section form .form-area div{
+            
+            margin-bottom: -10px;
+            
+        }
+        input,textarea{
+            outline: none;
+        }
+        .form-section form .form-area .confirm-btns-section{
+            display: flex;
+            justify-content: center;
+            padding-top: 28px;
+        }
+        .form-section form .form-area .location-section{
+            display: flex;
+            justify-content: space-between;
+        }
+        .form-section form .form-area .location-section .city-section input{
+            width: 70px;
+        }
+        .form-section form .form-area .location-section .city-section p,
+        .form-section form .form-area .location-section .state-section p,
+        .form-section form .form-area .country-section p,.form-section form .form-area .name-section p,
+        .form-section form .form-area .phno-section p,
+        .form-section form .form-area .address-section p,
+        .form-section form .form-area .email-section p
+        {
+            margin-bottom: 5px;
+        }
+        .form-section form .form-area .confirm-btns-section button{
+            background-color: blueviolet;
+            color: white;
+            font-weight: bold;
+            border: none;
+            padding-top: 7px;
+            padding-bottom: 7px;
+            padding-left: 12px;
+            padding-right: 12px;
+            margin-left: 18px;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+        .money-payment-section{
+            display: flex;
+            flex-direction: column;
+            
+            width: 850px;
+        }
+        .money-payment-section .heading{
+            font-weight: bold;
+            font-size: 25px;
+            text-align: center;
+        }
+        .payment-option-1{
+            display: flex;
+            
+        }
+        .payment-section .payment{
+            width: 380px;
+            box-shadow: 0px 0px 5px rgb(235, 228, 228);
+            border-radius: 18px;
+            margin-left: 20px;
+            margin-bottom: 28px;
+        }
+        .payment-section div .payment-option{
+            display: flex;
+            align-items: center;
+            padding: 16px;
+            justify-content: space-between;
+        }
+        .payment-section div .payment-option .middle{
+            display: flex;
+         }
+        .payment-section div .payment-option .right .icon       
+        {
+            width: 30px;
+            height: 30px;
+        }
+        .payment-section div .payment-option .icon,
+        .payment-section div .payment-option input {
+            width: 20px;
+            height: 20px;
+        }
+        .payment-section div .payment-option .middle div{
+            padding-left: 20px;
+        }
+        .payment-section div .payment-option .middle div p{
+            margin-top: 0px;
+            margin-bottom: 0px;
+            line-height: 22px;
+        }
+
+
+        .order-summary-section .order-title-name{
+            font-size: 28px;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: underline;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+        }
+        .cost-details-section{
+            display: flex;
+            justify-content: space-between;
+            width: 400px;
+            
+        }
+        .order-summary-section .cost-section{
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            
+        }
+        .cost-details-section .shipping-details{
+            color: black;
+            font-size: 18px;
+        }
+        .cost-details-section .cost-details{
+            text-align: right;
+            font-size: 18px;
+        }
+        .total-cost-analysis{
+            display: flex;
+            justify-content: space-between;
+            margin-left: 25px;
+            border-top: 0.1px solid rgb(196, 181, 181);
+            width: 400px;
+        }
+        .total-cost-analysis .total-cost-name,.total-cost-analysis .total-cost{
+            font-size: 23px;
+            color: red;
+            font-weight: bold;
+            display: flex;
+            
+        }
+        .place-order-btn{
+            text-align: center;
+        }
+        .change-btn{
+            background-color: blue;
+            color: white;
+            border: none;
+            padding-top: 10px;
+            padding-left: 15px;
+            padding-right: 15px;
+            padding-bottom: 10px;
+            cursor: pointer;
+            border-radius: 9px;
+        }
+        .place-order-btn button{
+            background-color: yellow;
+            color: black;
+            font-size: 17px;
+            font-weight: 500;
+            width: 250px;
+            border: none;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            padding-left: 20px;
+            padding-right: 20px;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+        .order-placed-text{
+            position: absolute;
+            top: -20px;
+            right: 10px;
+            font-weight: bold;
+            display: none;
+            font-size: 21px;
+        }
+        .user-address .user-name{
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .user-address p{
+            margin-top: 0px;
+            margin-bottom: 0px;
+            line-height: 35px;
+            font-size: 21px;
+        }
+        .my-fullscreen-swal {
+        width: 100vw !important;
+        height: 100vh !important;
+        max-width: 100vw !important;
+        max-height: 100vh !important;
+        border-radius: 0 !important;
+        display: flex !important;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 3rem;
+        background-color: #4caf50 !important;
+        color: white !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="checkout-box-section">
+        <div class="user-details-money-payment-section">
+            <div class="address-section">
+                <div class="js-user-address user-address">
+                    <p class="user-name">Delivering to DULAM LEELA VAMSI KRISHNA</p>
+                    <p>3-134,Ramalayam street,DP</p>
+                    <p>Tadepalligudem,Andhra Pradesh</p>
+                    <p>9949471552</p>
+                </div>
+                <div class="details-section">
+                    <button class="js-change-btn change-btn">Change</button>
+                    <div class="form-section-box">
+                    <div class="form-section">
+                    <form>
+                        <p class="save-result js-save-result">Saved ✅</p>
+                        <p class="form-heading">Enter a new shipping address</p>
+                        <div class="form-area">
+                            <div class="country-section">
+                                <p>Country/Region</p>
+                                <select>
+                                    <option>India</option>
+                                    <option>United States</option>
+                                    <option>Uganda</option>
+                                    <option>Ukraine</option>
+                                </select>
+                            </div>
+                            <div class="name-section">
+                                <p>Full name(First and Last name)</p>
+                                <input class="js-name" required type="text" placeholder="Enter your name">
+                            </div>
+                            <div class="phno-section">
+                                <p>Phone number</p>
+                                <input required class="js-phno" type="tel" placeholder="Enter your phno">
+                            </div>
+                            <div class="email-section">
+                                <p>Email</p>
+                                <input required class="js-email" type="email" placeholder="Enter your email address">
+                            </div>
+                            <div class="address-section">
+                                <p>Address</p>
+                                <textarea required class="js-address" rows="8" cols="22"></textarea>
+                            </div>
+                            <div class="location-section">
+                                <div class="city-section">
+                                    <p>City</p>
+                                    <input class="js-city-name" type="text">
+                                </div>
+                                <div class="state-section js-state-section">
+                                    <p>State</p>
+                                    <select class="js-state">
+                                        <option>select</option>
+                                        <option>Andhra pradesh</option>
+                                        <option>Andaman</option>
+                                        <option>kerala</option>
+                                        <option>telangana</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="make-default-address-section">
+                                <input type="checkbox" name="confirm-address-check-box">
+                                <p>Make this my default address</p>
+                                <p class="js-note note">please provide your information</p>
+                            </div>
+                            
+                            <div class="confirm-btns-section">
+                                <button class="js-save-btn" style="margin-right: 15px;">Save</button>
+                                <button class="js-close-btn">close</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                </div>
+                </div>
+                
+                
+            </div>
+            <div class="money-payment-section">
+                <p class="heading">Select a Payment Method</p>
+                <div class="payment-section">
+                <div class="payment-option-1">
+                    <div class="payment">
+                        <div class="payment-option"> 
+                            <div class="middle">
+                                <input name="payment-radio" type="radio">
+                                <div>
+                                    <p>Amazon Pay UPI</p>
+                                    <p style="color: gray;">Union Bank of India ****</p>
+                                    <a href="#">
+                                        <p style="color: blue;">check balance</p>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="right">
+                                <img class="icon" src="amazonpagepics/amazon-pay.png">
+                            </div>
+                        </div>
+                        <div class="payment-option">
+                            
+                            <div class="middle">
+                                <input name="payment-radio" type="radio">
+                                <div>
+                                    <p>Pay by any UPI App</p>
+                                    <p style="color: gray;">Google Pay,PhonePe,Paytm and more</p>
+                                </div>
+                            </div>
+                            <div class="right">
+                                <img class="icon" src="amazonpagepics/mobile-banking.png">
+                            </div>
+                        </div>
+                        <div class="payment-option">
+                            <div class="middle">
+                                <img style="padding-left: 5px;" class="icon" src="amazonpagepics/add.png">
+                                <div>
+                                    <p>Add account to Amazon Pay UPI</p>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="payment">
+                        <div class="payment-option">
+                            <div class="middle">
+                                <img style="padding-left: 5px;" class="icon" src="amazonpagepics/add.png">
+                                <div>
+                                    <p>Add a new credit or debit card</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="payment-option">
+                            <div class="middle">
+                                <input name="payment-radio" type="radio">
+                                <div>
+                                    <p>EMI Option</p>
+                                </div>
+                            </div>
+                            <div class="right">
+                                <img class="icon" src="amazonpagepics/payment.png">
+                            </div>
+                        </div>
+                        <div class="payment-option">
+                            <div class="middle">
+                                <input name="payment-radio" type="radio">
+                                <div>
+                                    <p>Cash on Delivery/Pay on Delivery</p>
+                                </div>
+                            </div>
+                            <div class="right">
+                                <img class="icon" src="amazonpagepics/cash-payment.png">
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    
+                    <div class="payment">
+                        <div class="payment-option"> 
+                            <div class="middle">
+                                <input name="payment-radio" type="radio">
+                                <div>
+                                    <p>Amazon Pay Balance</p>
+                                    <p style="color: gray;">Available balance: &#8377 32.00</p>
+                                    <p style="color: gray;">Add &#8377 126.7.00 to proceed</p>
+                                </div>
+                            </div>
+                            <div class="right">
+                                <img class="icon" src="amazonpagepics/amazon-pay.png">
+                            </div>
+                        </div>
+                        <div class="payment-option">
+                            <div class="middle">
+                                <input name="payment-radio" type="radio">
+                                <div>
+                                    <p>Net Banking</p>
+                                </div>
+                            </div>
+                            <div class="right">
+                                <img class="icon" src="amazonpagepics/credit-card.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="order-summary-section js-order-summary-section">
+            
+           
+        </div>
+         
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="module" src="paymentcode.js">
+        
+        
+    </script>
+</body>
+</html>

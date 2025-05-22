@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .cart-section{
+            position: relative;
+        }
+        
+        .cart-section,.cart-pic{
+            width: 80px;
+            height: 50px;
+            cursor: pointer;
+        }
+        .cart-count{
+            position: absolute;
+            top: -15px;
+            right: 30px;
+            font-size: 20px;
+            font-weight: bold;
+            font-size: 24px;
+        }
+        .products{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        }
+        .product-container{
+            width: 200px;
+            height: 500px;
+        }
+        .product-pic{
+            width: 200px;
+            height: 250px;
+            object-fit: cover;
+        }
+        .product-name{
+            margin-top: 0px;
+            margin-bottom: 0px;
+            padding-top: 10px;
+            font-size: 18px;
+        }
+        .product-rating-section{
+            display: flex;
+            align-items: center;
+            padding-top: 10px;
+        }
+        .product-rating-pic{
+            width: 80px;
+            height: 30px;
+
+        }
+        .product-rating-members-count{
+            font-size: 20px;
+            padding-left: 8px;
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+        .product-cost-section{
+            display: flex;
+            align-items: center;
+            padding-top: 10px;
+        }
+        .product-cost{
+            margin-top: 0px;
+            margin-bottom: 0px;
+            padding-right: 20px;
+            font-weight: bold;
+            font-size: 35px;
+        }
+        .product-selection-count{
+            height: 25px;
+            background-color: rgb(170, 54, 54);
+            color: white;
+            font-weight: bold;
+            border: none;
+            padding: 5px;
+        }
+        .product-addtocart-btn-section{
+            padding-left: 10px;
+            padding-top: 20px;
+        }
+        .addtocart-btn{
+            background-color: yellow;
+            font-weight: bold;
+            border: none;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 20px;
+            padding-right: 20px;
+            font-size: 15px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+        .header-section{
+            position: fixed;
+            z-index: 999;
+            padding-top: 10px;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: rgb(255, 255, 255);
+            padding-left: 30px;
+            padding-right: 30px;
+            
+        }
+        .header-section .left-section img{
+            width: 200px;
+            height: 90px;
+            object-fit: cover;
+        }
+        .header-section .middle-section{
+            flex: 1;
+            max-width: 700px;
+            min-width: 400px;
+            position: relative;
+            margin-left: -150px;
+        }
+        .header-section .middle-section .input-box{
+            outline: none;
+            height: 15px;
+            width: 100%;
+            border-radius: 20px;
+            border: none;
+            box-shadow: 0px 0px 5px rgb(134, 108, 108);
+            padding: 15px;
+        }
+        .header-section .middle-section .search-icon-container{
+            background-color: rgb(240, 224, 224);
+             width: 25px;
+            height: 25px;
+            object-fit: cover;
+            position: absolute;
+            right: -30px;
+            border-radius: 0px 20px 20px 0px;
+            top: 0px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-right: 20px;
+            padding-left: 25px;
+            cursor: pointer;
+
+        }
+        .header-section .middle-section .search-icon{
+           width: 100%;
+        }
+        .header-section .middle-section .mic-icon-box{
+            position: absolute;
+        }
+         .header-section .middle-section .mic-icon{
+            width: 100%;
+            left: -68px;
+            width: 25px;
+            height: 25px;
+            position: absolute;
+         }
+         .header-section .cart-section{
+            display: flex;
+            position: relative;
+         }
+         .header-section .cart-section .cart-pic{
+            object-fit: contain;
+            height: 55px;
+         }
+         .header-section .cart-section .reset-btn{
+            position: absolute;
+            left: -115px;
+            top: 6px;
+            border: none;
+            font-weight: bold;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 15px;
+            padding-right: 15px;
+            border-radius: 6px;
+            background-color: red;
+            cursor: pointer;
+         }
+         .bottom-section{
+            margin-top: 30px;
+            position: absolute;
+            top: 100px;
+            padding: 20px;
+            right: 0px;
+            left: 0px;
+            left: 0px;
+            z-index: 1;
+         }
+         .product-container{
+            box-shadow: 0px 0px 5px rgb(237, 227, 227);
+            margin-bottom: 40px;
+            padding-bottom: 10px;
+            padding-top: 30px;
+            padding-left: 30px;
+            padding-right: 30px;
+         }
+         .added-text{
+            color: gray;
+            font-weight: bold;
+            display: none;
+         }
+    </style>
+</head>
+<body>
+    <div>
+        <div class="header-section">
+            <div class="left-section">
+                <img src="amazonpagepics/pngimg.com - amazon_PNG21.png">
+            </div>
+            <div class="middle-section">
+                <input class="input-box" placeholder="Enter any item name" type="text">
+                <div class="search-icon-container">
+                    <div class="mic-icon-box">
+                        <img class="mic-icon" src="amazonpagepics/mic.png">
+                    </div>
+                    <img class="search-icon" src="amazonpagepics/search-interface-symbol.png">
+                </div>
+            </div>
+            <div class="cart-section">
+                <a href="cart.html">
+                    <img class="cart-pic" src="amazonpagepics/shopping-cart.png">
+                </a>
+                <p class="cart-count js-cart-count">0</p>
+                <button class="reset-btn js-reset-cart-btn">Reset cart</button>
+            </div>
+            
+        </div>
+        <div class="bottom-section">
+            <div class="products js-products"></div>
+        </div>
+        
+    </div>
+    
+    
+    <script type="module" src="amazonpagecode.js"></script>
+</body>
+</html>
