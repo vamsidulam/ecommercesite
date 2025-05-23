@@ -14,7 +14,6 @@ document.querySelector('.js-password').addEventListener('keydown',(event)=>{
         check();
     }
 });
-
 function check(){
     let email=document.querySelector('.js-email').value;
     let password=document.querySelector('.js-password').value;
@@ -22,14 +21,31 @@ function check(){
     console.log(password);
     console.log(users);
     let found=0;
+    let count=0;
     users.forEach( (pair,index)=>{
         if(pair.email===email&&pair.password===password){
             found=1;
             location.href='https://vamsidulam.github.io/ecommercesite/amazonpage.html';
         }
+        if(pair.email===email){
+            count=1;
+        }
     });
-    if(!found){
-        alert('No email found,Please Register');
+    if(!found && !count){
+        Swal.fire({
+            icon: 'error',
+            title: 'Log in Failure!',
+            text: 'No Registered email',
+            confirmButtonText: 'OK'
+        });
+    }
+    if(count===1 && found===0){
+        Swal.fire({
+            icon: 'error',
+            title: 'Failure!',
+            text: 'Incorrect Password',
+            confirmButtonText: 'OK'
+        });
     }
     document.querySelector('.js-email').value='';
     document.querySelector('.js-password').value='';
