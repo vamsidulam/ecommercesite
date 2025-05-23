@@ -35,6 +35,7 @@ function newmailpassword(){
             text: 'Registered Successfully',
             confirmButtonText: 'OK'
         });
+        location.href='https://vamsidulam.github.io/ecommercesite/amazonpage.html';
 
     }
     
