@@ -109,16 +109,16 @@ document.querySelector('.confirm-btn').addEventListener('click',()=>{
 });
 
 function showOrderPlaced() {
-    Swal.fire({
-      title: 'Order Placed!',
-      text: 'Thank you for your purchase.',
-      icon: 'success',
-      showConfirmButton: false,
-      timer: 3000,
-      customClass: {
-        popup: 'my-fullscreen-swal'
-      },
-      background: '#4CAF50',
-      color: '#fff',
-    });
-  }
+  Swal.fire({
+    title: 'Order Placed!',
+    text: 'Thank you for your purchase.',
+    icon: 'success',
+    showConfirmButton: false,
+    timer: 3000,
+    customClass: {
+      popup: 'swal-fullscreen'
+    },
+    background: '#4CAF50',
+    color: '#fff',
+  });
+}
