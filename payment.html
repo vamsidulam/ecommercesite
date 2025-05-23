@@ -278,6 +278,17 @@
             padding: 1rem;
             box-sizing: border-box;
         }
+         @media (max-width: 442px){
+            .checkout-box-section{
+                display: flex;
+                flex-direction: column;
+            }
+            .order-summary{
+                display: flex;
+                justify-content: center;
+                padding-left: 400px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -462,9 +473,9 @@
                 </div>
             </div>
         </div>
-        <div class="order-summary-section js-order-summary-section">
-            
-           
+        <div class="order-summary">
+            <div class="order-summary-section js-order-summary-section">
+            </div>
         </div>
          
     </div>
