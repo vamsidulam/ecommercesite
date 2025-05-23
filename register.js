@@ -2,6 +2,11 @@
 document.querySelector('.js-confirm-btn').addEventListener('click',()=>{
     newmailpassword();
 });
+document.querySelector('.js-new-password').addEventListener('keydown',(event)=>{
+    if(event.key==='Enter'){
+        newmailpassword();
+    }
+});
 function newmailpassword(){
     let email=document.querySelector('.js-new-email').value;
     let password=document.querySelector('.js-new-password').value;
