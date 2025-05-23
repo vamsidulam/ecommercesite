@@ -25,16 +25,9 @@ function check(){
     console.log(email);
     console.log(password);
     console.log(users);
-    // let n1=document.querySelector('.js-otp1').value;
-    // let n2=document.querySelector('.js-otp2').value;
-    // let n3=document.querySelector('.js-otp3').value;
-    // let n4=document.querySelector('.js-otp4').value;
-    // console.log(n1+n2+n3+n4);
-    // let otp=`${n1}${n2}${n3}${n4}`;
+ 
     let found=0;
     let count=0;
-    // console.log(otp)
-    // console.log(otp_generated);
     users.forEach( (pair,index)=>{
         if(pair.email===email&&pair.password===password){
             found=1;
@@ -60,10 +53,7 @@ function check(){
             confirmButtonText: 'OK'
         });
     }
-    // document.querySelector('.js-otp1').value='';
-    // document.querySelector('.js-otp2').value='';
-    // document.querySelector('.js-otp3').value='';
-    // document.querySelector('.js-otp4').value='';
+    
     document.querySelector('.js-email').value='';
     document.querySelector('.js-password').value='';
 }
