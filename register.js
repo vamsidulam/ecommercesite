@@ -32,7 +32,7 @@ function newmailpassword(){
         Swal.fire({
             icon: 'success',
             title: 'Success!',
-            text: 'Password changed successfully',
+            text: 'Registered Successfully',
             confirmButtonText: 'OK'
         });
 
