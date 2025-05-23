@@ -26,7 +26,7 @@ function check(){
     console.log(otp)
     console.log(otp_generated);
     users.forEach( (pair,index)=>{
-        if(pair.email===email&&pair.password===password && otp_generated.toString()===otp){
+        if(pair.email===email&&pair.password===password){
             found=1;
             location.href='https://vamsidulam.github.io/ecommercesite/amazonpage.html';
         }
